@@ -1,19 +1,12 @@
 package com.example.android.notekeeper;
 
-import android.database.Cursor;
-import android.os.Parcel;
-import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.List;
-/**
- * Created by Jim.
- */
 
 public final class CourseInfo {
     private final String mCourseId;
     private final String mTitle;
-    private final List<com.example.android.notekeeper.ModuleInfo> mModules;
+    private final List<ModuleInfo> mModules;
 
     public CourseInfo(String courseId, String title, List<com.example.android.notekeeper.ModuleInfo> modules) {
         mCourseId = courseId;

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Jim.
+ *
  */
 
 public class DataManager {
     private static DataManager ourInstance = null;
 
-    private List<com.example.android.notekeeper.CourseInfo.CourseInfo> mCourses = new ArrayList<>();
+    private List<com.example.android.notekeeper.CourseInfo> mCourses = new ArrayList<>();
     private List<com.example.android.notekeeper.NoteInfo> mNotes = new ArrayList<>();
 
     public static DataManager getInstance() {
@@ -30,7 +30,7 @@ public class DataManager {
         return "jimw@jwhh.com";
     }
 
-    public List<com.example.android.notekeeper.CourseInfo> getNotes() {
+    public List<com.example.android.notekeeper.NoteInfo> getNotes() {
         return mNotes;
     }
 
@@ -53,19 +53,19 @@ public class DataManager {
         mNotes.remove(index);
     }
 
-    public List<com.example.android.notekeeper.CourseInfo.CourseInfo> getCourses() {
+    public List<com.example.android.notekeeper.CourseInfo> getCourses() {
         return mCourses;
     }
 
-    public com.example.android.notekeeper.CourseInfo.CourseInfo getCourse(String id) {
-        for (com.example.android.notekeeper.CourseInfo.CourseInfo course : mCourses) {
+    public com.example.android.notekeeper.CourseInfo getCourse(String id) {
+        for (com.example.android.notekeeper.CourseInfo course : mCourses) {
             if (id.equals(course.getCourseId()))
                 return course;
         }
         return null;
     }
 
-    public List<com.example.android.notekeeper.NoteInfo> getNotes(com.example.android.notekeeper.CourseInfo.CourseInfo course) {
+    public List<com.example.android.notekeeper.NoteInfo> getNotes(com.example.android.notekeeper.CourseInfo course) {
         ArrayList<com.example.android.notekeeper.NoteInfo> notes = new ArrayList<>();
         for(com.example.android.notekeeper.NoteInfo note:mNotes) {
             if(course.equals(note.getCourse()))
@@ -74,7 +74,7 @@ public class DataManager {
         return notes;
     }
 
-    public int getNoteCount(com.example.android.notekeeper.CourseInfo.CourseInfo course) {
+    public int getNoteCount(com.example.android.notekeeper.CourseInfo course) {
         int count = 0;
         for(com.example.android.notekeeper.NoteInfo note:mNotes) {
             if(course.equals(note.getCourse()))
@@ -98,21 +98,21 @@ public class DataManager {
     public void initializeExampleNotes() {
         final DataManager dm = getInstance();
 
-        com.example.android.notekeeper.CourseInfo.CourseInfo course = dm.getCourse("android_intents");
+        com.example.android.notekeeper.CourseInfo course = dm.getCourse("android_intents");
         course.getModule("android_intents_m01").setComplete(true);
         course.getModule("android_intents_m02").setComplete(true);
         course.getModule("android_intents_m03").setComplete(true);
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Dynamic intent resolution",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Dynamic intent resolution",
                 "Wow, intents allow components to be resolved at runtime"));
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Delegating intents",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Delegating intents",
                 "PendingIntents are powerful; they delegate much more than just a component invocation"));
 
         course = dm.getCourse("android_async");
         course.getModule("android_async_m01").setComplete(true);
         course.getModule("android_async_m02").setComplete(true);
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Service default threads",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Service default threads",
                 "Did you know that by default an Android Service will tie up the UI thread?"));
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Long running operations",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Long running operations",
                 "Foreground Services can be tied to a notification icon"));
 
         course = dm.getCourse("java_lang");
@@ -123,75 +123,75 @@ public class DataManager {
         course.getModule("java_lang_m05").setComplete(true);
         course.getModule("java_lang_m06").setComplete(true);
         course.getModule("java_lang_m07").setComplete(true);
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Parameters",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Parameters",
                 "Leverage variable-length parameter lists"));
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Anonymous classes",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Anonymous classes",
                 "Anonymous classes simplify implementing one-use types"));
 
         course = dm.getCourse("java_core");
         course.getModule("java_core_m01").setComplete(true);
         course.getModule("java_core_m02").setComplete(true);
         course.getModule("java_core_m03").setComplete(true);
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Compiler options",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Compiler options",
                 "The -jar option isn't compatible with with the -cp option"));
-        mNotes.add(new com.jwhh.jim.notekeeper.NoteInfo(course, "Serialization",
+        mNotes.add(new com.example.android.notekeeper.NoteInfo(course, "Serialization",
                 "Remember to include SerialVersionUID to assure version compatibility"));
     }
 
-    private com.example.android.notekeeper.CourseInfo.CourseInfo initializeCourse1() {
-        List<com.jwhh.jim.notekeeper.ModuleInfo> modules = new ArrayList<>();
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_intents_m01", "Android Late Binding and Intents"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_intents_m02", "Component activation with intents"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_intents_m03", "Delegation and Callbacks through PendingIntents"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_intents_m04", "IntentFilter data tests"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_intents_m05", "Working with Platform Features Through Intents"));
+    private com.example.android.notekeeper.CourseInfo initializeCourse1() {
+        List<com.example.android.notekeeper.ModuleInfo> modules = new ArrayList<>();
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_intents_m01", "Android Late Binding and Intents"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_intents_m02", "Component activation with intents"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_intents_m03", "Delegation and Callbacks through PendingIntents"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_intents_m04", "IntentFilter data tests"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_intents_m05", "Working with Platform Features Through Intents"));
 
-        return new com.example.android.notekeeper.CourseInfo.CourseInfo("android_intents", "Android Programming with Intents", modules);
+        return new com.example.android.notekeeper.CourseInfo("android_intents", "Android Programming with Intents", modules);
     }
 
-    private com.example.android.notekeeper.CourseInfo.CourseInfo initializeCourse2() {
-        List<com.jwhh.jim.notekeeper.ModuleInfo> modules = new ArrayList<>();
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_async_m01", "Challenges to a responsive user experience"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_async_m02", "Implementing long-running operations as a service"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_async_m03", "Service lifecycle management"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("android_async_m04", "Interacting with services"));
+    private com.example.android.notekeeper.CourseInfo initializeCourse2() {
+        List<com.example.android.notekeeper.ModuleInfo> modules = new ArrayList<>();
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_async_m01", "Challenges to a responsive user experience"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_async_m02", "Implementing long-running operations as a service"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_async_m03", "Service lifecycle management"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("android_async_m04", "Interacting with services"));
 
-        return new com.example.android.notekeeper.CourseInfo.CourseInfo("android_async", "Android Async Programming and Services", modules);
+        return new com.example.android.notekeeper.CourseInfo("android_async", "Android Async Programming and Services", modules);
     }
 
-    private com.example.android.notekeeper.CourseInfo.CourseInfo initializeCourse3() {
-        List<com.jwhh.jim.notekeeper.ModuleInfo> modules = new ArrayList<>();
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m01", "Introduction and Setting up Your Environment"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m02", "Creating a Simple App"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m03", "Variables, Data Types, and Math Operators"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m04", "Conditional Logic, Looping, and Arrays"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m05", "Representing Complex Types with Classes"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m06", "Class Initializers and Constructors"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m07", "A Closer Look at Parameters"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m08", "Class Inheritance"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m09", "More About Data Types"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m10", "Exceptions and Error Handling"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m11", "Working with Packages"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m12", "Creating Abstract Relationships with Interfaces"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_lang_m13", "Static Members, Nested Types, and Anonymous Classes"));
+    private com.example.android.notekeeper.CourseInfo initializeCourse3() {
+        List<com.example.android.notekeeper.ModuleInfo> modules = new ArrayList<>();
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m01", "Introduction and Setting up Your Environment"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m02", "Creating a Simple App"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m03", "Variables, Data Types, and Math Operators"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m04", "Conditional Logic, Looping, and Arrays"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m05", "Representing Complex Types with Classes"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m06", "Class Initializers and Constructors"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m07", "A Closer Look at Parameters"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m08", "Class Inheritance"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m09", "More About Data Types"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m10", "Exceptions and Error Handling"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m11", "Working with Packages"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m12", "Creating Abstract Relationships with Interfaces"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_lang_m13", "Static Members, Nested Types, and Anonymous Classes"));
 
-        return new com.example.android.notekeeper.CourseInfo.CourseInfo("java_lang", "Java Fundamentals: The Java Language", modules);
+        return new com.example.android.notekeeper.CourseInfo("java_lang", "Java Fundamentals: The Java Language", modules);
     }
 
-    private com.example.android.notekeeper.CourseInfo.CourseInfo initializeCourse4() {
-        List<com.jwhh.jim.notekeeper.ModuleInfo> modules = new ArrayList<>();
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m01", "Introduction"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m02", "Input and Output with Streams and Files"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m03", "String Formatting and Regular Expressions"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m04", "Working with Collections"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m05", "Controlling App Execution and Environment"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m06", "Capturing Application Activity with the Java Log System"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m07", "Multithreading and Concurrency"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m08", "Runtime Type Information and Reflection"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m09", "Adding Type Metadata with Annotations"));
-        modules.add(new com.jwhh.jim.notekeeper.ModuleInfo("java_core_m10", "Persisting Objects with Serialization"));
+    private com.example.android.notekeeper.CourseInfo initializeCourse4() {
+        List<com.example.android.notekeeper.ModuleInfo> modules = new ArrayList<>();
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m01", "Introduction"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m02", "Input and Output with Streams and Files"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m03", "String Formatting and Regular Expressions"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m04", "Working with Collections"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m05", "Controlling App Execution and Environment"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m06", "Capturing Application Activity with the Java Log System"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m07", "Multithreading and Concurrency"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m08", "Runtime Type Information and Reflection"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m09", "Adding Type Metadata with Annotations"));
+        modules.add(new com.example.android.notekeeper.ModuleInfo("java_core_m10", "Persisting Objects with Serialization"));
 
-        return new com.example.android.notekeeper.CourseInfo.CourseInfo("java_core", "Java Fundamentals: The Core Platform", modules);
+        return new com.example.android.notekeeper.CourseInfo("java_core", "Java Fundamentals: The Core Platform", modules);
     }
     //endregion
 
