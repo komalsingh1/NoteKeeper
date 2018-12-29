@@ -29,7 +29,7 @@ class NodeListActivity extends AppCompatActivity {
         });
         initializeDisplayContent();
     }
-    private void initializeDisplayContent() {
+    private  void initializeDisplayContent() {
         ListView listnotes=findViewById(R.id.list_nodes);
         List<NoteInfo> notes=DataManager.getInstance().getNotes();
     }
