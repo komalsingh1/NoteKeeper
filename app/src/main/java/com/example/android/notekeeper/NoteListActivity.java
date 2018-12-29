@@ -26,7 +26,6 @@ class NodeListActivity extends AppCompatActivity {
         });
         initializeDisplayContent();
     }
-
     private void initializeDisplayContent() {
 
     }
